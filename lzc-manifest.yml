@@ -1,0 +1,21 @@
+application:
+  subdomain: writebook
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://writebook:80
+
+services:
+  writebook:
+    # upstream: wulab/writebook:latest
+    image: wulab/writebook:latest
+    environment:
+      - SECRET_KEY_BASE={{ stable_secret "writebook#secret_key" }}
+    binds:
+      - /lzcapp/var/storage:/rails/storage
+    setup_script: |
+      mkdir -p /rails/storage/db /rails/storage/files
+      chown -R rails:rails /rails/storage
+      chown -R 1000:1000 /lzcapp/var/storage
+      chmod -R 755 /lzcapp/var/storage

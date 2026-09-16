@@ -1,0 +1,14 @@
+package: lazycat.coummunity.app.writebook
+version: 1.1.0
+name: Writebook
+description: "Instantly publish your own books on the web"
+min_os_version: "1.5.0"
+homepage: https://once.com/writebook
+author: once
+locales:
+  zh:
+    description: "随时在网页上发布您自己的书籍"
+    name: Writebook
+  en:
+    description: "Instantly publish your own books on the web"
+    name: Writebook
