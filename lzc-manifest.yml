@@ -5,11 +5,10 @@ application:
   upstreams:
     - location: /
       backend: http://writebook:80
-
 services:
   writebook:
-    # upstream: wulab/writebook:latest
-    image: wulab/writebook:latest
+    # upstream: wulab/writebook:latest@sha256:1b0a46fc933ec27313ec36de6b6390b79a18d617df661522a6ff8ba5c06b1ae6
+    image: registry.lazycat.cloud/czyt/wulab/writebook:54fa01d5f57446ab
     environment:
       - SECRET_KEY_BASE={{ stable_secret "writebook#secret_key" }}
     binds:
