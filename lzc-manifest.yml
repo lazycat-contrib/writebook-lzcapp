@@ -7,14 +7,17 @@ application:
       backend: http://writebook:80
 services:
   writebook:
-    # upstream: wulab/writebook:latest@sha256:1b0a46fc933ec27313ec36de6b6390b79a18d617df661522a6ff8ba5c06b1ae6
-    image: registry.lazycat.cloud/czyt/wulab/writebook:54fa01d5f57446ab
+    # upstream: ghcr.io/basecamp/writebook:1.2.3
+    image: ghcr.1ms.run/basecamp/writebook:1.2.3
+    # 镜像内以 uid 1000 运行，持久目录由 root 挂载；以 root 启动保证存储可写
+    user: root
     environment:
-      - SECRET_KEY_BASE={{ stable_secret "writebook#secret_key" }}
+      # 懒猫微服网关负责 TLS 终止，应用走明文 HTTP（上游 README 的 Plain HTTP）
+      - DISABLE_SSL=1
+      - SECRET_KEY_BASE={{stable_secret "writebook#secret_key"}}
     binds:
       - /lzcapp/var/storage:/rails/storage
     setup_script: |
       mkdir -p /rails/storage/db /rails/storage/files
-      chown -R rails:rails /rails/storage
       chown -R 1000:1000 /lzcapp/var/storage
       chmod -R 755 /lzcapp/var/storage
