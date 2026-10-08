@@ -13,7 +13,6 @@ update:
   version_source:
     type: image
     image: writebook
-    bump: patch
 build:
   run_buildscript: false
 images:
@@ -24,17 +23,6 @@ images:
     channel: stable
     sort: semver
     tag_regex: '^[0-9]+\.[0-9]+\.[0-9]+$'
-stores:
-  official:
-    enabled: true
-    skip_if_version_exists: true
-    changelog_locales: [zh, en]
-  private:
-    enabled: true
-    skip_if_version_exists: true
-    name: Writebook
-    summary: "Instantly publish your own books on the web"
-
     delivery:
       mode: mirror
 stores:
