@@ -24,7 +24,7 @@ images:
     sort: semver
     tag_regex: '^[0-9]+\.[0-9]+\.[0-9]+$'
     delivery:
-      mode: mirror
+      mode: lazycat
 stores:
   official:
     enabled: true
