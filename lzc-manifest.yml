@@ -7,8 +7,8 @@ application:
       backend: http://writebook:80
 services:
   writebook:
-    # upstream: ghcr.io/basecamp/writebook:1.2.8
-    image: registry.lazycat.cloud/czyt/basecamp/writebook:15b59aa74b1e8e71
+    # upstream: ghcr.io/basecamp/writebook:1.2.9
+    image: registry.lazycat.cloud/czyt/basecamp/writebook:eac3af852bedd556
     # 镜像内以 uid 1000 运行，持久目录由 root 挂载；以 root 启动保证存储可写
     user: root
     environment:
